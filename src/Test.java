@@ -99,28 +99,42 @@ public class Test {
         List<Integer> saisie = new ArrayList<>();
         int rep;
         int t = 0;
+        int i = 0;
         do {
 
             System.out.println("Donnez un nombre");
             saisie.add(sc.nextInt());
-
+            i= t-1;
             if(t!=0) {
+                System.out.println(i+";"+t);
+                while(i>0 && saisie.get(t) < saisie.get(i)){
+                    i--;
+                    System.out.println(i+";;"+t);
+                };
 
-                if (saisie.get(t) < saisie.get(t - 1)) {
-                    int repo = saisie.get(t - 1);
-                    saisie.set((t - 1), saisie.get(t));
-                    saisie.set(t, repo);
-
-                    t = t + 1;
+                if (i>=0 && saisie.get(t) < saisie.get(i)){
+                    System.out.println(i+";;;"+t);
+                    saisie.add(i, saisie.get(t));
+                    saisie.remove(t+1);
+                } else if (saisie.get(t) < saisie.get(i+1)){
+                    System.out.println(i+";;;;"+t);
+                    saisie.add(i+1, saisie.get(t));
+                    saisie.remove(t+1);
                 }
+
+
+                t= t+1;
+
             } else {
                 t = t + 1;
             }
+
             System.out.println("vous voulez insérer un autre nombre 1/0");
             rep = sc.nextInt();
 
         } while (rep == 1);
         System.out.println(saisie);
+
     }
 
 }
