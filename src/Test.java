@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 public class Test {
 
@@ -45,7 +47,7 @@ public class Test {
         }
         System.out.println("après minute il fera " +h+ "h" +min);
 
-*/
+
         System.out.println("donnez un nombre");
         int nb = sc.nextInt();
         int reste;
@@ -94,5 +96,31 @@ public class Test {
         System.out.println("résultat "+resultat);
 
  */
+        List<Integer> saisie = new ArrayList<>();
+        int rep;
+        int t = 0;
+        do {
+
+            System.out.println("Donnez un nombre");
+            saisie.add(sc.nextInt());
+
+            if(t!=0) {
+
+                if (saisie.get(t) < saisie.get(t - 1)) {
+                    int repo = saisie.get(t - 1);
+                    saisie.set((t - 1), saisie.get(t));
+                    saisie.set(t, repo);
+
+                    t = t + 1;
+                }
+            } else {
+                t = t + 1;
+            }
+            System.out.println("vous voulez insérer un autre nombre 1/0");
+            rep = sc.nextInt();
+
+        } while (rep == 1);
+        System.out.println(saisie);
     }
+
 }
